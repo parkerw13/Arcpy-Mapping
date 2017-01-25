@@ -1,0 +1,12 @@
+# below script can be put in the Python window in ArcGIS with the map document open for 
+# iterating through 2 pages in the same map book
+
+>>> mxd = arcpy.mapping.MapDocument("CURRENT")
+>>> x=1
+>>> rows = arcpy.UpdateCursor("BusStops_IB71_GridIndex","","","PageNumber","PageName D")
+>>> for row in rows:
+...     row.PageNumber = x
+...     rows.updateRow(row)
+...     x+=1
+...     
+>>> 
